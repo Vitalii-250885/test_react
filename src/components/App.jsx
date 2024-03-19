@@ -1,26 +1,19 @@
-// import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const App = () => {
-  // const [feedbacks, setValues] = useState({
-  //   good: 0,
-  //   neutral: 0,
-  //   bad: 0,
-  // });
+  const [clicks, setClicks] = useState(0);
 
-  const updateFeedback = (feedbackType) => {
-    console.log("Hello:", feedbackType);
-    // setValues({
-    //   ...feedbacks,
-    //   feedbackType: feedbacks.feedbackType + 1,
-    // });
-  };
+  useEffect(() => {
+    window.localStorage.setItem("saved-clicks", clicks);
+  }, [clicks]);
 
   return (
-    <>
-      <button onClick={"Hello"}>Good</button>
-      <button onClick={"Privet"}>Neutral</button>
-      <button onClick={"rtf"}>Bad</button>
-    </>
+    <div>
+      <button onClick={() => setClicks(clicks + 1)}>
+        You clicked {clicks} times
+      </button>
+      <button onClick={() => setClicks(0)}>Reset</button>
+    </div>
   );
 };
 
