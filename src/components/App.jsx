@@ -1,18 +1,22 @@
-import { useState, useEffect } from "react";
+// import React from "react";
+import LoginForm from "./LoginForm";
+import SearchBar from "./SearchBar";
+import LangSwitcher from "./LangSwitcher";
 
 const App = () => {
-  const [clicks, setClicks] = useState(0);
-
-  useEffect(() => {
-    window.localStorage.setItem("saved-clicks", clicks);
-  }, [clicks]);
+  // Колбек-функція для обробки сабміту форми
+  const handleLogin = (userData) => {
+    // Виконуємо необхідні операції з даними
+    console.log(userData);
+  };
 
   return (
     <div>
-      <button onClick={() => setClicks(clicks + 1)}>
-        You clicked {clicks} times
-      </button>
-      <button onClick={() => setClicks(0)}>Reset</button>
+      <h1>Please login to your account!</h1>
+      {/* Передаємо колбек як пропс форми */}
+      <LoginForm onLogin={handleLogin} />
+      <SearchBar />
+      <LangSwitcher />
     </div>
   );
 };
