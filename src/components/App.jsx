@@ -1,18 +1,15 @@
-// import React from "react";
-// import FeedbackForm from "./FeedbackForm";
-import SearchBar from "./SearchBar";
-// import LangSwitcher from "./LangSwitcher";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const App = () => {
+function App() {
+  const notify = () => toast("Wow so easy!");
+
   return (
     <div>
-      <h1>Please login to your account!</h1>
-      {/* Передаємо колбек як пропс форми */}
-      {/* <FeedbackForm /> */}
-      <SearchBar />
-      {/* <LangSwitcher /> */}
+      <button onClick={notify}>Notify!</button>
+      <ToastContainer />
     </div>
   );
-};
+}
 
 export default App;
