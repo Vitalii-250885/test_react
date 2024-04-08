@@ -1,15 +1,36 @@
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
+import { SiYourtraveldottv } from "react-icons/si";
 
-function App() {
-  const notify = () => toast("Wow so easy!");
+import "./Header.scss";
+
+const Header = (props) => {
+  useEffect(() => {
+    // addEventListner
+    // setTimeout
+    // setInterval
+
+    return () => {
+      // console.log('work');
+      // removeEventListener()
+      // clearTimeout()
+      // clearInterval()
+    };
+  }, []);
 
   return (
-    <div>
-      <button onClick={notify}>Notify!</button>
-      <ToastContainer />
-    </div>
-  );
-}
+    <header>
+      <div className="controlls">
+        <button className="btn primary" onClick={props.toggleTheme}>
+          Toggle Theme {props.theme}
+        </button>
 
-export default App;
+        <SiYourtraveldottv />
+      </div>
+      {props.lastUpdatedDate && (
+        <p>Last updated:{props.lastUpdatedDate.format("HH:mm:ss MMMM,DD")}</p>
+      )}
+    </header>
+  );
+};
+
+export default Header;
