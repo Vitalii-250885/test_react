@@ -1,36 +1,38 @@
-import { useEffect } from "react";
-import { SiYourtraveldottv } from "react-icons/si";
+import { Routes, Route, NavLink } from "react-router-dom";
+import clsx from "clsx";
+import Home from "path/to/pages/Home";
+import About from "path/to/pages/About";
+import Products from "path/to/pages/Products";
+import NotFound from "path/to/pages/NotFound";
+import css from "./App.module.css";
 
-import "./Header.scss";
+const buildLinkClass = ({ isActive }) => {
+  return clsx(css.link, isActive && css.active);
+};
 
-const Header = (props) => {
-  useEffect(() => {
-    // addEventListner
-    // setTimeout
-    // setInterval
-
-    return () => {
-      // console.log('work');
-      // removeEventListener()
-      // clearTimeout()
-      // clearInterval()
-    };
-  }, []);
-
+export const App = () => {
   return (
-    <header>
-      <div className="controlls">
-        <button className="btn primary" onClick={props.toggleTheme}>
-          Toggle Theme {props.theme}
-        </button>
+    <div>
+      <nav className={css.nav}>
+        <NavLink to="/" className={buildLinkClass}>
+          Home
+        </NavLink>
+        <NavLink to="/about" className={buildLinkClass}>
+          About
+        </NavLink>
+        <NavLink to="/products" className={buildLinkClass}>
+          Products
+        </NavLink>
+      </nav>
 
-        <SiYourtraveldottv />
-      </div>
-      {props.lastUpdatedDate && (
-        <p>Last updated:{props.lastUpdatedDate.format("HH:mm:ss MMMM,DD")}</p>
-      )}
-    </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
   );
 };
 
-export default Header;
+export default App;
