@@ -1,38 +1,19 @@
-import { Routes, Route, NavLink } from "react-router-dom";
-import clsx from "clsx";
-import Home from "path/to/pages/Home";
-import About from "path/to/pages/About";
-import Products from "path/to/pages/Products";
-import NotFound from "path/to/pages/NotFound";
-import css from "./App.module.css";
+import { useSelector } from "react-redux";
 
-const buildLinkClass = ({ isActive }) => {
-  return clsx(css.link, isActive && css.active);
-};
+import { Layout } from "./Layout/Layout";
+import { AppBar } from "./AppBar/AppBar";
+import { TaskForm } from "./TaskForm/TaskForm";
+import { TaskList } from "./TaskList/TaskList";
 
 export const App = () => {
-  return (
-    <div>
-      <nav className={css.nav}>
-        <NavLink to="/" className={buildLinkClass}>
-          Home
-        </NavLink>
-        <NavLink to="/about" className={buildLinkClass}>
-          About
-        </NavLink>
-        <NavLink to="/products" className={buildLinkClass}>
-          Products
-        </NavLink>
-      </nav>
+  const value = useSelector((state) => state.some.value);
+  console.log("🚀 ~ App ~ value:", value);
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </div>
+  return (
+    <Layout>
+      <AppBar />
+      <TaskForm />
+      <TaskList />
+    </Layout>
   );
 };
-
-export default App;
