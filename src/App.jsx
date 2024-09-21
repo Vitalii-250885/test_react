@@ -1,12 +1,15 @@
-import Header from "./components/header/Header";
-import Skills from "./components/skills/Skills";
+import "./App.css";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Skills />
-    </>
+    <div className="container">
+      <i className="hovicon">Custom Software</i>
+      <i className="hovicon">API Development</i>
+      <i className="hovicon">Data engineering</i>
+      <i className="hovicon">Infrastructure & DevOps</i>
+      <i className="hovicon">Mobile app development</i>
+      <i className="hovicon">AI development</i>
+    </div>
   );
 }
 
